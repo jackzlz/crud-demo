@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/public/css/ui-dialog.css" media="screen" title="no title">
+    <script src="/public/js/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script src="/public/js/jquery.validate.js" charset="utf-8"></script>
+    <script src="/public/js/messages_zh.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/dialog-min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/public/js/main.js"></script>
+
+    <script type="text/javascript">
+        $.validator.setDefaults({
+            // 对隐藏域也进行校验
+            ignore: [],
+            // 手动触发校验
+            onsubmit: false,
+            highlight: function(element) {
+                $(element).closest('.form-group').addClass('has-error');
+            },
+            unhighlight: function(element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function(error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            main.init();
+        });
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>DEMO</h1>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+        </div>
+        <p>
+            <button type="button" class="btn btn-primary" id="addBtn">Add</button>
+        </p>
+        <p>
+
+          <div id="list">
+
+            
+          </div>
+        </p>
+    </div>
+    <div id="addFormDiv" style="display:none">
+        <form role="form" id="addForm">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" name="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="desc">描述</label>
+                <textarea class="form-control" rows="3" name="desc" placeholder="Enter desc"></textarea>
+            </div>
+            <button type="button" class="btn btn-default" id="saveBtn">保存</button>
+        </form>
+    </div>
+</body>
+
+</html>
